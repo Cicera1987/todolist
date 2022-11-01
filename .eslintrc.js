@@ -9,6 +9,9 @@ module.exports = {
         'airbnb',
         'plugin:@typescript-eslint/recommended',
         'prettier/@typescript-eslint',
+        "prettier",
+        "some-other-config-you-use",
+        "prettier/@typescript-eslint" 
     ],
     globals: {
         Atomics: 'readonly',
@@ -18,7 +21,7 @@ module.exports = {
         ecmaFeatures: {
             jsx: true,
         },
-        ecmaVersion: 2018,
+        ecmaVersion: 2019,
         sourceType: 'module',
     },
     plugins: ['react', 'import', 'jsx-a11y'],

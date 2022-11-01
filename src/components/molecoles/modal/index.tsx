@@ -42,8 +42,7 @@ const ModalCreateTask: React.FC = () => {
     };
     setTask([...task, newTask]);
   };
-  console.log(title);
-  console.log(description);
+  
   console.log(task);
 
   useEffect(()=>{

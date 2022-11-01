@@ -8,17 +8,17 @@ export enum TodoListTypes {
 
 // Data types
 
-export interface Todolist{
-    id: number,
-    title: string,
+export interface todolist{
+    id: number
+    title: string
     description: string
-}
+};
 
 
 //states types
-
+// readonly nunca deixa estas informações serem alteradas
 export interface TodoListState{
-    readonly data: Todolist[],
+    readonly data: todolist[],
     readonly loading: boolean,
     readonly error: boolean
-}
+};

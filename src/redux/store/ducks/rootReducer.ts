@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
-import {Todolist}  from './repositores/types';
+
+import  {todolist}  from "./repositores/types";
 
 export default combineReducers({
-    Todolist,
+    todolist: combineReducers ,
 });

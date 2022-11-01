@@ -1,12 +1,7 @@
-import React from 'react';
-import './App.css';
-import HomePage from './components/pages/todoList';
+import Router from './routes/routes';
 
 
 const App = () => {
-  return (
-    <HomePage />
-  )
+  return <Router/>;
 }
-
 export default App;

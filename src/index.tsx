@@ -1,11 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './App.css';
-import ModalCreateTask from './components/molecoles/modal';
-import NavBar from './components/molecoles/navBar';
-import About from './components/pages/about';
-import Home from './components/pages/todoList';
+import "./App.css";
+import App from './App';
 
 
 const root = ReactDOM.createRoot(
@@ -13,13 +9,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path='/ModalCreateTask' element={<ModalCreateTask/>}/>
-      </Routes>
-    </BrowserRouter>
+   <App/>
   </React.StrictMode>
 );
