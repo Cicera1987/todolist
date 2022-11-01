@@ -50,3 +50,10 @@ export const ContainerTitle = styled.label`
   display: flex;
   margin: 1em 0 0 0; 
 `
+
+export const ContainerModalTasks = styled.div`
+  display: flex;
+  flex-wrap:wrap;
+  width: 200px;
+  height: 250px;
+`

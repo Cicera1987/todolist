@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ContainerNav } from "./styles";
 
-const NavBar = () =>{
+const NavBar = () => {
 
     return (
       <ContainerNav>

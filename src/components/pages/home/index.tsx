@@ -3,7 +3,7 @@ import Todolist from "../todoList";
 import "./App.css";
 
 
-const Home: React.FC = () => {
+const Home = () => {
   return (
    <Todolist/>
   )

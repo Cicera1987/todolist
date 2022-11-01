@@ -3,7 +3,7 @@ import './App.css';
 import HomePage from './components/pages/todoList';
 
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <HomePage />
   )
