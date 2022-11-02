@@ -37,10 +37,10 @@ const ModalCreateTask: React.FC = () => {
   const createTodos = () => {
     const idRandom = (num: number) => Math.floor(Math.random() * num);
     const newTask: ITodoItem = {
-        id: idRandom(99),
-        title: title,
-        description: description,
-        tags: null,
+      id: idRandom(99),
+      title: title,
+      description: description,
+      tags: taskTags,
     };
     setTodoTask([...todoTask, newTask]);
   };
@@ -60,26 +60,34 @@ const ModalCreateTask: React.FC = () => {
           <Button onClick={OpenModal}>Criar Task</Button>
         </DivButtons>
       </ContainerButtons>
-      <Modal isOpen={modalIsOpen} onRequestClose={handleCloseModal}>
-        <ContainerModal>
-          <h4>Criar Tarefa</h4>
-          <ContainerTitle>Titulo</ContainerTitle>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <ContainerTitle>Descrição</ContainerTitle>
-          <TextArea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-          <Button onClick={createTodos}>Salvar</Button>
-        </ContainerModal>
-        <DivButtons>
-          <Button onClick={handleCloseModal}>Voltar</Button>
-        </DivButtons>
-      </Modal>
+      <div>
+        <Modal isOpen={modalIsOpen} onRequestClose={handleCloseModal}>
+          <ContainerModal>
+            <h4>Criar Tarefa</h4>
+            <ContainerTitle>Titulo</ContainerTitle>
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <ContainerTitle>Tarefa pertence </ContainerTitle>
+            <input
+              type='tags'
+              value=""
+              onChange={(e) => setTaskTags(taskTags)}
+            />
+            <ContainerTitle>Descrição</ContainerTitle>
+            <TextArea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <Button onClick={createTodos}>Salvar</Button>
+          </ContainerModal>
+          <DivButtons>
+            <Button onClick={handleCloseModal}>Voltar</Button>
+          </DivButtons>
+        </Modal>
+      </div>
       <ContainerListTask>
         {todoTask.map((task, key) => (
           <Todolist key={key} task={task} />

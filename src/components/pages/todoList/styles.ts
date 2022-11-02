@@ -2,9 +2,8 @@ import styled from "styled-components";
 
 export const ContainerHome = styled.div`
   display: flex;
-  width: 100%;
+  width:90%;
   height: 500px;
-  padding: 10px;
   margin: 0 0 0 2em;
   border-radius: 20px ;
   background-color: #f3dbe4;
@@ -54,17 +53,20 @@ export const ContainerTitle = styled.label`
 export const ContainerModalTasks = styled.div`
   flex-wrap: wrap;
   background-color:#FFF5EE;
-  width: 100%;
+  width: 170px;
   border: solid 0.5px  #FFE4E1;
   border-radius: 10px;
-  height: 150px;
-  margin: 0 0 0 0.5em;
+  height: 190px;
+  margin: 0 0 0 1em;
 
 `
 
-export const Title = styled.h4`
-  padding: 8px;
+export const Title = styled.h5`
+  padding: 5px;
   color: 	#696969;
+  align-items: center;
+  
+
 `
 
 export const Description = styled.div`
@@ -75,11 +77,40 @@ export const Description = styled.div`
   margin: 0 0 0 6px;
   border: solid 0.5px  #D3D3D3;
   border-radius: 8px;
+  font-size: 13px;
 `
 
 export const ContainerListTask = styled.div`
   display: flex;
   width:100%;
   height: 400px; 
+
+`
+
+export const ContainerIconTodo = styled.div`
+  display: flex;
+
+`
+export const ContainerIconItem = styled.div`
+  display: flex;
+  flex-direction:row;
+  margin: 0.3em;
+  gap: 7.2em;
+  position: relative;
+  cursor: pointer;
+`
+export const ContainerIconTitle = styled.div`
+  display: flex;
+  flex-direction:row;
+  margin: 0.3em;
+  position: relative;
+  align-items: center;
+
+`
+export const ContainerTags= styled.div`
+  display: flex;
+  flex-direction:row;
+  margin: 0.3em;
+  position: relative;
 
 `
