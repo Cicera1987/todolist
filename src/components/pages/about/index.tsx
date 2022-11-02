@@ -1,5 +1,5 @@
 import React from "react";
-import { ContainerHome } from "../../molecoles/modal/styles";
+import { ContainerHome } from "../../organismes/createTask/styles";
 
 function About() {
   return (

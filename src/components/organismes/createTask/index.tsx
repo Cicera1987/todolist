@@ -47,6 +47,9 @@ const ModalCreateTask: React.FC = () => {
 
   console.log(todoTask);
 
+  function deleteTask(DeleteTaskById: number):void{
+    setTodoTask(todoTask.filter((dataTask) => dataTask.id !== DeleteTaskById))
+  }
   
   useEffect(()=>{
     setTodoTask(todoTask);
@@ -72,7 +75,7 @@ const ModalCreateTask: React.FC = () => {
             />
             <ContainerTitle>Tarefa pertence </ContainerTitle>
             <input
-              type='tags'
+              type="tags"
               value=""
               onChange={(e) => setTaskTags(taskTags)}
             />
@@ -90,7 +93,7 @@ const ModalCreateTask: React.FC = () => {
       </div>
       <ContainerListTask>
         {todoTask.map((task, key) => (
-          <Todolist key={key} task={task} />
+          <Todolist key={key} task={task} deleteTask={deleteTask} />
         ))}
       </ContainerListTask>
     </ContainerHome>

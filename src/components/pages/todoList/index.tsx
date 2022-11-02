@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { ITodoItem } from "../../../types";
 import {
   ContainerModalTasks,
@@ -16,11 +15,12 @@ import {
   HiArrowCircleRight,
 } from "react-icons/hi";
 
-interface taskProps{
-  task: ITodoItem
+interface taskProps {
+  task: ITodoItem;
+  deleteTask(DeleteTaskById: number):void,
 }
 
-function Todolist({task}: taskProps) {
+function Todolist({task, deleteTask}: taskProps) {
   
   return (
     <ContainerModalTasks>
@@ -39,7 +39,7 @@ function Todolist({task}: taskProps) {
               <HiOutlinePencilAlt fontSize={20} color="#5e5858" />
             </a>
             <a>
-              <HiOutlineTrash fontSize={20} color="#5e5858" />
+              <HiOutlineTrash fontSize={20} color="#5e5858"  onClick={() => deleteTask(task.id)}/>
             </a>
           </ContainerIconItem>
         </ContainerIconTodo>
