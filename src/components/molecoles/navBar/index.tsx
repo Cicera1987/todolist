@@ -4,7 +4,6 @@ import {
   HiHome,
   HiUserCircle,
   HiOutlineDocumentText,
-  HiOutlineUserAdd,
 } from "react-icons/hi";
 
 const NavBar = () => {

@@ -70,7 +70,7 @@ export const Title = styled.h5`
 `
 
 export const Description = styled.div`
-  width: 140px;
+  width: 145px;
   height: 90px;
   padding: 5px;
   color: 	#696969;
@@ -78,6 +78,11 @@ export const Description = styled.div`
   border: solid 0.5px  #D3D3D3;
   border-radius: 8px;
   font-size: 13px;
+  overflow: hidden; // Removendo barra de rolagem
+  text-overflow: ellipsis; // Adicionando "..." ao final
+  display: -webkit-box;
+  -webkit-line-clamp: 6; // Quantidade de linhas
+  -webkit-box-orient: vertical;
 `
 
 export const ContainerListTask = styled.div`
