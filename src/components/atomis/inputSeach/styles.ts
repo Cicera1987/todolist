@@ -6,7 +6,6 @@ export const ContainerInput = styled.div`
     padding: 0 0 0 1em;
     height: 35px;
     background-color: #ffff;
-
     color: #f4ede8;
     align-items: center;
 input{

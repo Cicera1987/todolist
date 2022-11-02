@@ -1,7 +1,8 @@
-import Todolist from "../todoList";
 
 const Home = () => {
-  return <Todolist />;
+  return (
+  <div/>
+  )
 };
 
 export default Home;

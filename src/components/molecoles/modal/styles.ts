@@ -30,17 +30,14 @@ export const ContainerModal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 210px;
-  height: 400px;
-  background-color: white;
-  border-radius: 15px;
-  z-index: 10;
+  width: 230px;
+  height: 280px;
   padding-bottom: 1em;
 `
 export const TextArea = styled.textarea`
   display: flex;
-  width: 100%;
-  height: 150px;
+  width: 89%;
+  height: 120px;
   border-radius: 5px;
   padding: 0.8em;
   margin: 0 0 1em 0;
@@ -49,11 +46,4 @@ export const TextArea = styled.textarea`
 export const ContainerTitle = styled.label`
   display: flex;
   margin: 1em 0 0 0; 
-`
-
-export const ContainerModalTasks = styled.div`
-  display: flex;
-  flex-wrap:wrap;
-  width: 200px;
-  height: 250px;
 `

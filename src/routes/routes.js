@@ -11,10 +11,11 @@ const Router = () => {
         <BrowserRouter>
             <NavBar/>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<ModalCreateTask />} />
+                <Route path="/home" element={<ModalCreateTask />} />
                 <Route path="/about" element={<About/>} />
-                <Route path='/ModalCreateTask' element={<ModalCreateTask />} />
-                <Route path="/RepositoriesTodolist" element={<Todolist/>}/>
+                <Route path='/modalCreateTask' element={<ModalCreateTask />} />
+                <Route path="/todolist" element={<Todolist/>}/>
             </Routes>
         </BrowserRouter>
     )

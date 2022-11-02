@@ -1,11 +1,11 @@
-interface ITodoItem{
+export interface ITodoItem{
     id: number,
     title:string,
     description: string,
     tags: ITagsItem[] | null
 }
 
-interface ITagsItem{
+export interface ITagsItem{
     id: number,
     title: string
 

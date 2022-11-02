@@ -9,15 +9,17 @@ import {
   ContainerModal,
   TextArea,
   ContainerTitle,
-  ContainerModalTasks,
 } from "./styles";
 import Modal from "react-modal";
+import Todolist from "../../pages/todoList";
+import { ITagsItem, ITodoItem } from "../../../types";
+import { ContainerListTask } from "../../pages/todoList/styles";
 
 Modal.setAppElement("#root");
 
 const ModalCreateTask: React.FC = () => {
   const [modalIsOpen, setIsopen] = useState(false);
-  const [task, setTask] = useState<ITodoItem[]>([]);
+  const [todoTask, setTodoTask] = useState<ITodoItem[]>([]);
   const [taskTags, setTaskTags] = useState<ITagsItem[]>([]);
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -35,19 +37,20 @@ const ModalCreateTask: React.FC = () => {
   const createTodos = () => {
     const idRandom = (num: number) => Math.floor(Math.random() * num);
     const newTask: ITodoItem = {
-        id: idRandom(9999999999),
+        id: idRandom(99),
         title: title,
         description: description,
         tags: null,
     };
-    setTask([...task, newTask]);
+    setTodoTask([...todoTask, newTask]);
   };
-  
-  console.log(task);
 
+  console.log(todoTask);
+
+  
   useEffect(()=>{
-    setTask(task)
-  },[task])
+    setTodoTask(todoTask);
+  },[])
 
   return (
     <ContainerHome>
@@ -71,21 +74,17 @@ const ModalCreateTask: React.FC = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          <Button onClick={createTodos}>
-            Salvar
-          </Button>
+          <Button onClick={createTodos}>Salvar</Button>
         </ContainerModal>
         <DivButtons>
           <Button onClick={handleCloseModal}>Voltar</Button>
         </DivButtons>
       </Modal>
-      <>
-        {task.map((task:ITodoItem) => {
-          <ContainerModalTasks>
-            {task.id} {task.title} {task.description}
-          </ContainerModalTasks>;
-        })}
-      </>
+      <ContainerListTask>
+        {todoTask.map((task, key) => (
+          <Todolist key={key} task={task} />
+        ))}
+      </ContainerListTask>
     </ContainerHome>
   );
 };

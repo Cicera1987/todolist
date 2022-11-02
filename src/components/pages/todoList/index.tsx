@@ -1,12 +1,24 @@
-import  { Component } from "react";
-import ModalCreateTask from "../../molecoles/modal";
+import { ITodoItem } from "../../../types";
+import {
+  ContainerModalTasks,
+  Title,
+  Description,
+} from "./styles";
 
-export default class Todolist extends Component {
-  componentDidMount(){}
-  render() {
-      return (
-      <ModalCreateTask />
-      )
-  }  
+interface taskProps{
+  task: ITodoItem
+}
+
+function Todolist({task}: taskProps) {
+  
+  return (
+      <ContainerModalTasks>
+        <div>
+          <Title>{task.title}</Title>
+          <Description>{task.description}</Description>
+        </div>
+      </ContainerModalTasks>
+  );
 };
 
+export default Todolist;
