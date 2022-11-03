@@ -4,6 +4,12 @@ import InputSearch from "../../atomis/inputSeach/InputSearch";
 import { FiSearch } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Modal from "react-modal";
+import Todolist from "../../pages/todoList";
+import { ITagsItem, ITodoItem } from "../../../redux/types";
+import { ContainerListTask } from "../../pages/todoList/styles";
+import { TodoListTypes, DeleteTask } from "../../../redux/store/reducers/slice"; 
+import { useDispatch } from "react-redux";
 import {
   ContainerHome,
   ContainerButtons,
@@ -12,10 +18,7 @@ import {
   TextArea,
   ContainerTitle,
 } from "./styles";
-import Modal from "react-modal";
-import Todolist from "../../pages/todoList";
-import { ITagsItem, ITodoItem } from "../../../types";
-import { ContainerListTask } from "../../pages/todoList/styles";
+
 
 Modal.setAppElement("#root");
 
@@ -25,6 +28,7 @@ const ModalCreateTask: React.FC = () => {
   const [taskTags, setTaskTags] = useState<ITagsItem[]>([]);
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
+  const dispatch = useDispatch()
 
   const handleCloseModal = () => {
     setIsopen(false);
@@ -46,17 +50,22 @@ const ModalCreateTask: React.FC = () => {
         description: description,
         tags: taskTags,
       };
-      setTodoTask([...todoTask, newTask]);
+         
       toast.success("Tarefa cadastrada com sucesso!");
-    }
-
-    
+      dispatch(TodoListTypes(setTodoTask([...todoTask, newTask])));
+    } 
   };
 
   console.log(todoTask);
 
   function deleteTask(DeleteTaskById: number):void{
-    setTodoTask(todoTask.filter((dataTask) => dataTask.id !== DeleteTaskById))
+   dispatch(
+     DeleteTask(
+       setTodoTask(
+         todoTask.filter((dataTask) => dataTask.id !== DeleteTaskById)
+       )
+     )
+   ); 
   }
   
   useEffect(()=>{

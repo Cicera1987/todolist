@@ -1,4 +1,4 @@
-import { ITodoItem } from "../../../types";
+import { ITodoItem } from "../../../redux/types";
 import {
   ContainerModalTasks,
   Title,
@@ -9,6 +9,9 @@ import {
   ContainerTags,
 } from "./styles";
 
+import { connect } from "react-redux";
+import { AnyAction, bindActionCreators, Dispatch } from "redux";
+import * as TodoActions from "./styles";
 import {
   HiOutlinePencilAlt,
   HiOutlineTrash,
@@ -29,18 +32,16 @@ function Todolist({task, deleteTask}: taskProps) {
           <HiArrowCircleRight fontSize={20} color="#5e5858" />
           <Title>{task.title}</Title>
         </ContainerIconTitle>
+        
         <ContainerTags>
 
         </ContainerTags>
+
         <Description>{task.description}</Description>
         <ContainerIconTodo>
           <ContainerIconItem>
-            <a>
-              <HiOutlinePencilAlt fontSize={20} color="#5e5858" />
-            </a>
-            <a>
-              <HiOutlineTrash fontSize={20} color="#5e5858"  onClick={() => deleteTask(task.id)}/>
-            </a>
+            <a><HiOutlinePencilAlt fontSize={20} color="#5e5858" /></a>
+            <a><HiOutlineTrash fontSize={20} color="#5e5858"  onClick={() => deleteTask(task.id)}/></a>
           </ContainerIconItem>
         </ContainerIconTodo>
       </div>
@@ -48,4 +49,11 @@ function Todolist({task, deleteTask}: taskProps) {
   );
 };
 
-export default Todolist;
+const mapStateToProps = (state: { ITodoItem: any }) => ({
+  ITodoItem: state.ITodoItem,
+});
+
+const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) =>
+  bindActionCreators(TodoActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todolist);

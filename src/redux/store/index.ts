@@ -1,12 +1,12 @@
-import {createStore, Store} from 'redux'
+import {  configureStore } from "@reduxjs/toolkit";
+import  useReducer from "./reducers/slice";
+import { persistStore} from 'redux-persist'
 
-import { TodoListState } from './ducks/repositores/types'
+export const store = configureStore({
+  reducer: {
+    todolist: useReducer,
+  },
+});
 
-import rootreducer from './ducks/rootreducer'
-
-export interface AplicationState {
-    todolist: TodoListState
-}
-
-const store: Store <AplicationState> = createStore(rootreducer)
-//store
+export const persistor = persistStore(store)
+export default store;
