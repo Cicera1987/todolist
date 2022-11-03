@@ -21,6 +21,6 @@ export const slice = createSlice({
 
 export const {TodoListTypes, DeleteTask } = slice.actions
 
-export const selectorUser = (state: { ITodoItem: any }) => state.ITodoItem;
+export const selectorUser = (state: { todolist: any }) => state.todolist;
 
 export default slice.reducer

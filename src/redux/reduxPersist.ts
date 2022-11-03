@@ -9,7 +9,7 @@ export default (reducers: Reducer<unknown, Action<any>>) =>{
      {
        key: "Todolist",
        storage,
-       whitelist: ["ITodoItem"],
+       whitelist: ["todolist"],
      },
      reducers
    );
