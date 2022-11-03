@@ -31,12 +31,8 @@ function Todolist({task, deleteTask}: taskProps) {
         <ContainerIconTitle>
           <HiArrowCircleRight fontSize={20} color="#5e5858" />
           <Title>{task.title}</Title>
-        </ContainerIconTitle>
-        
-        <ContainerTags>
-
-        </ContainerTags>
-
+        </ContainerIconTitle>   
+        <ContainerTags></ContainerTags>
         <Description>{task.description}</Description>
         <ContainerIconTodo>
           <ContainerIconItem>

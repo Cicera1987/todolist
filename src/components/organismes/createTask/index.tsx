@@ -8,7 +8,7 @@ import Modal from "react-modal";
 import Todolist from "../../pages/todoList";
 import { ITagsItem, ITodoItem } from "../../../redux/types";
 import { ContainerListTask } from "../../pages/todoList/styles";
-import { TodoListTypes, DeleteTask } from "../../../redux/store/reducers/slice"; 
+import { TodoListTypes, DeleteTask } from "../../../redux/store/reducers/slice";
 import { useDispatch } from "react-redux";
 import {
   ContainerHome,
@@ -19,7 +19,6 @@ import {
   ContainerTitle,
 } from "./styles";
 
-
 Modal.setAppElement("#root");
 
 const ModalCreateTask: React.FC = () => {
@@ -28,7 +27,7 @@ const ModalCreateTask: React.FC = () => {
   const [taskTags, setTaskTags] = useState<ITagsItem[]>([]);
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleCloseModal = () => {
     setIsopen(false);
@@ -39,7 +38,6 @@ const ModalCreateTask: React.FC = () => {
   };
 
   const createTask = () => {
-
     if (title === "" && description === "") {
       toast.error("Informe os dados para cadastrar uma tarefa!");
     } else {
@@ -50,27 +48,27 @@ const ModalCreateTask: React.FC = () => {
         description: description,
         tags: taskTags,
       };
-         
+
       toast.success("Tarefa cadastrada com sucesso!");
       dispatch(TodoListTypes(setTodoTask([...todoTask, newTask])));
-    } 
+    }
   };
 
   console.log(todoTask);
 
-  function deleteTask(DeleteTaskById: number):void{
-   dispatch(
-     DeleteTask(
-       setTodoTask(
-         todoTask.filter((dataTask) => dataTask.id !== DeleteTaskById)
-       )
-     )
-   ); 
+  function deleteTask(DeleteTaskById: number): void {
+    dispatch(
+      DeleteTask(
+        setTodoTask(
+          todoTask.filter((dataTask) => dataTask.id !== DeleteTaskById)
+        )
+      )
+    );
   }
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     setTodoTask(todoTask);
-  },[])
+  }, []);
 
   return (
     <ContainerHome>
@@ -91,20 +89,12 @@ const ModalCreateTask: React.FC = () => {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-            <ContainerTitle>Tarefa pertence </ContainerTitle>
-            <input
-              type="tags"
-              value=""
-              onChange={(e) => setTaskTags(taskTags)}
-            />
             <ContainerTitle>Descrição</ContainerTitle>
             <TextArea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
-            <Button onClick={createTask}>
-              Salvar
-            </Button>
+            <Button onClick={createTask}>Salvar</Button>
           </ContainerModal>
           <DivButtons>
             <Button onClick={handleCloseModal}>Voltar</Button>
