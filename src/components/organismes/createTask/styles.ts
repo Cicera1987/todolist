@@ -31,7 +31,7 @@ export const ContainerModal = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 230px;
-  height: 280px;
+  height: 350px;
   padding-bottom: 1em;
 `
 export const TextArea = styled.textarea`
