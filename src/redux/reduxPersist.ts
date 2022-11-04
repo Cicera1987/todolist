@@ -7,9 +7,9 @@ import { Reducer, Action } from 'redux';
 export default (reducers: Reducer<unknown, Action<any>>) =>{
    const persistedReducers = persistReducer(
      {
-       key: "Todolist",
+       key: "ITodoItem",
        storage,
-       whitelist: ["todolist"],
+       whitelist: ["ITodoItem"],
      },
      reducers
    );

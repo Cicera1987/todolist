@@ -52,7 +52,7 @@ const ModalCreateTask: React.FC = () => {
     } else {
       const idRandom = (num: number) => Math.floor(Math.random() * num);
       const newTask: ITodoItem = {
-        id: idRandom(99),
+        id: idRandom(1000),
         title: title,
         description: description,
         tags: taskTags,
@@ -77,10 +77,9 @@ const ModalCreateTask: React.FC = () => {
 
 
   useEffect(() => {
-    if(result){
-       dispatch(TodoListTypes(result));
+    if (result) {
+      dispatch(TodoListTypes(result));
     }
-   
   }, []);
 
 
@@ -127,7 +126,7 @@ const ModalCreateTask: React.FC = () => {
         </div>
         <ContainerListTask>
           {todosItens.map((task, key) => (
-            <Todolist key={key} task={task} deleteTask={deleteTask} />
+            <Todolist key={key} task={task} deleteTask={deleteTask} result={result}/>
           ))}
         </ContainerListTask>
       </ContainerHome>

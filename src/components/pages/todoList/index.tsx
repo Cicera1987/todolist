@@ -20,7 +20,9 @@ import {
 
 interface taskProps {
   task: ITodoItem;
-  deleteTask(DeleteTaskById: number):void,
+  deleteTask(DeleteTaskById: number): void;
+  result(): void;
+
 }
 
 function Todolist({task, deleteTask}: taskProps) {
