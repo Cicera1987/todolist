@@ -1,18 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { stat } from "fs/promises";
+import { ITodoItem } from "../../types";
 
+const initialState = { ITodoItem: [] as ITodoItem[], islogged: true };
 
 export const slice = createSlice({
   name: "todolist",
-  initialState: {
-    ITodoItem: [],
-    islogged: false,
-  },
+  initialState,
   reducers: {
     TodoListTypes(state, { payload }) {
-      return { ...state, islogged: true, todoList: payload }
+      state.ITodoItem.push(payload)
+
     },
       DeleteTask(state, { payload }) {
-      return { ...state, islogged: true, todoList: payload };
+       return { ...state, islogged: true, ITodoItem: payload };
+
     },
     
   },

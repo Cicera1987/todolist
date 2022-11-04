@@ -18,6 +18,8 @@ import {
   TextArea,
   ContainerTitle,
 } from "./styles";
+import { useSelector } from "react-redux";
+import store from "../../../redux/store/store";
 
 Modal.setAppElement("#root");
 
@@ -29,6 +31,9 @@ const ModalCreateTask: React.FC = () => {
   const [description, setDescription] = useState<string>("");
   const dispatch = useDispatch();
 
+  const todosItens = useSelector(
+    (state: ReturnType<typeof store.getState>) => state.todolist.ITodoItem
+  );
   const handleCloseModal = () => {
     setIsopen(false);
   };
@@ -48,22 +53,20 @@ const ModalCreateTask: React.FC = () => {
         description: description,
         tags: taskTags,
       };
-
+      dispatch(TodoListTypes(newTask));
       toast.success("Tarefa cadastrada com sucesso!");
-      dispatch(TodoListTypes(setTodoTask([...todoTask, newTask])));
     }
   };
 
-  console.log(todoTask);
+  // console.log(todoTask);
 
   function deleteTask(DeleteTaskById: number): void {
     dispatch(
       DeleteTask(
-        setTodoTask(
-          todoTask.filter((dataTask) => dataTask.id !== DeleteTaskById)
-        )
+          todosItens.filter((ITodoItem) => ITodoItem.id !== DeleteTaskById)
       )
     );
+    toast.warning("Tarefa excluida com sucesso!");
   }
 
   useEffect(() => {
@@ -72,7 +75,11 @@ const ModalCreateTask: React.FC = () => {
 
   return (
     <ContainerHome>
-      <ToastContainer autoClose={2000} pauseOnHover={false} />
+      <ToastContainer
+        autoClose={2000}
+        pauseOnHover={false}
+        position="bottom-left"
+      />
       <ContainerButtons>
         <InputSearch name="Pesquisa" icon={FiSearch} placeholder="Pesquisar" />
         <DivButtons>
@@ -102,7 +109,7 @@ const ModalCreateTask: React.FC = () => {
         </Modal>
       </div>
       <ContainerListTask>
-        {todoTask.map((task, key) => (
+        {todosItens.map((task, key) => (
           <Todolist key={key} task={task} deleteTask={deleteTask} />
         ))}
       </ContainerListTask>
@@ -111,3 +118,7 @@ const ModalCreateTask: React.FC = () => {
 };
 
 export default ModalCreateTask;
+function useAppSelector() {
+  throw new Error("Function not implemented.");
+}
+
