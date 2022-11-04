@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { stat } from "fs/promises";
 import { ITodoItem } from "../../types";
+
+
 
 const initialState = { ITodoItem: [] as ITodoItem[], islogged: true };
 
@@ -16,12 +17,11 @@ export const slice = createSlice({
        return { ...state, islogged: true, ITodoItem: payload };
 
     },
-    
-  },
+  }
   
 });
 
-export const {TodoListTypes, DeleteTask } = slice.actions
+export const { TodoListTypes, DeleteTask} = slice.actions;
 
 export const selectorUser = (state: { todolist: any }) => state.todolist;
 

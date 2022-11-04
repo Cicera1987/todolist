@@ -42,6 +42,8 @@ const ModalCreateTask: React.FC = () => {
     setIsopen(true);
   };
 
+
+
   const createTask = () => {
     if (title === "" && description === "") {
       toast.error("Informe os dados para cadastrar uma tarefa!");
@@ -58,7 +60,7 @@ const ModalCreateTask: React.FC = () => {
     }
   };
 
-  // console.log(todoTask);
+  console.log(todoTask);
 
   function deleteTask(DeleteTaskById: number): void {
     dispatch(
@@ -71,7 +73,8 @@ const ModalCreateTask: React.FC = () => {
 
   useEffect(() => {
     setTodoTask(todoTask);
-  }, []);
+    localStorage.setItem("ITodoItem", JSON.stringify(todosItens));
+  }, [todosItens]);
 
   return (
     <ContainerHome>
