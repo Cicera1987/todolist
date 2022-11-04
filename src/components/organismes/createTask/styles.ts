@@ -27,7 +27,7 @@ export const ContainerModal = styled.div`
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 230px;
@@ -45,5 +45,6 @@ export const TextArea = styled.textarea`
 `
 export const ContainerTitle = styled.label`
   display: flex;
-  margin: 1em 0 0 0; 
+  margin: 1em 0 0 0;
+  padding-bottom :0.5em ;
 `

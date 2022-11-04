@@ -20,20 +20,24 @@ import {
 } from "./styles";
 import { useSelector } from "react-redux";
 import store from "../../../redux/store/store";
+import NavBar from "../../molecoles/navBar";
 
 Modal.setAppElement("#root");
 
 const ModalCreateTask: React.FC = () => {
   const [modalIsOpen, setIsopen] = useState(false);
-  const [todoTask, setTodoTask] = useState<ITodoItem[]>([]);
+  // const [todoTask, setTodoTask] = useState<ITodoItem[]>([]);
   const [taskTags, setTaskTags] = useState<ITagsItem[]>([]);
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const dispatch = useDispatch();
 
+  const result = JSON.parse(localStorage.getItem("ITodoItem") as any);
+
   const todosItens = useSelector(
     (state: ReturnType<typeof store.getState>) => state.todolist.ITodoItem
   );
+
   const handleCloseModal = () => {
     setIsopen(false);
   };
@@ -41,8 +45,6 @@ const ModalCreateTask: React.FC = () => {
   const OpenModal = () => {
     setIsopen(true);
   };
-
-
 
   const createTask = () => {
     if (title === "" && description === "") {
@@ -55,73 +57,82 @@ const ModalCreateTask: React.FC = () => {
         description: description,
         tags: taskTags,
       };
+      localStorage.setItem("ITodoItem", JSON.stringify(todosItens));
       dispatch(TodoListTypes(newTask));
       toast.success("Tarefa cadastrada com sucesso!");
     }
   };
 
-  console.log(todoTask);
+  console.log(todosItens);
 
   function deleteTask(DeleteTaskById: number): void {
     dispatch(
       DeleteTask(
-          todosItens.filter((ITodoItem) => ITodoItem.id !== DeleteTaskById)
+        todosItens.filter((ITodoItem) => ITodoItem.id !== DeleteTaskById)
+
       )
     );
     toast.warning("Tarefa excluida com sucesso!");
   }
 
+
   useEffect(() => {
-    setTodoTask(todoTask);
-    localStorage.setItem("ITodoItem", JSON.stringify(todosItens));
-  }, [todosItens]);
+    if(result){
+       dispatch(TodoListTypes(result));
+    }
+   
+  }, []);
+
 
   return (
-    <ContainerHome>
-      <ToastContainer
-        autoClose={2000}
-        pauseOnHover={false}
-        position="bottom-left"
-      />
-      <ContainerButtons>
-        <InputSearch name="Pesquisa" icon={FiSearch} placeholder="Pesquisar" />
-        <DivButtons>
-          <Button onClick={OpenModal}>Criar Task</Button>
-        </DivButtons>
-      </ContainerButtons>
-      <div>
-        <Modal isOpen={modalIsOpen} onRequestClose={handleCloseModal}>
-          <ContainerModal>
-            <h4>Criar Tarefa</h4>
-            <ContainerTitle>Titulo</ContainerTitle>
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <ContainerTitle>Descrição</ContainerTitle>
-            <TextArea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <Button onClick={createTask}>Salvar</Button>
-          </ContainerModal>
+    <>
+      <NavBar />
+      <ContainerHome>
+        <ToastContainer
+          autoClose={2000}
+          pauseOnHover={false}
+          position="bottom-left"
+        />
+        <ContainerButtons>
+          <InputSearch
+            name="Pesquisa"
+            icon={FiSearch}
+            placeholder="Pesquisar"
+          />
           <DivButtons>
-            <Button onClick={handleCloseModal}>Voltar</Button>
+            <Button onClick={OpenModal}>Criar Task</Button>
           </DivButtons>
-        </Modal>
-      </div>
-      <ContainerListTask>
-        {todosItens.map((task, key) => (
-          <Todolist key={key} task={task} deleteTask={deleteTask} />
-        ))}
-      </ContainerListTask>
-    </ContainerHome>
+        </ContainerButtons>
+        <div>
+          <Modal isOpen={modalIsOpen} onRequestClose={handleCloseModal}>
+            <ContainerModal>
+              <h4>Criar Tarefa</h4>
+              <ContainerTitle>Titulo</ContainerTitle>
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              <ContainerTitle>Descrição</ContainerTitle>
+              <TextArea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+              <Button onClick={createTask}>Salvar</Button>
+            </ContainerModal>
+            <DivButtons>
+              <Button onClick={handleCloseModal}>Voltar</Button>
+            </DivButtons>
+          </Modal>
+        </div>
+        <ContainerListTask>
+          {todosItens.map((task, key) => (
+            <Todolist key={key} task={task} deleteTask={deleteTask} />
+          ))}
+        </ContainerListTask>
+      </ContainerHome>
+    </>
   );
 };
 
 export default ModalCreateTask;
-function useAppSelector() {
-  throw new Error("Function not implemented.");
-}
-

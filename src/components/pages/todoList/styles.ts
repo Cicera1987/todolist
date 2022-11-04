@@ -20,7 +20,8 @@ export const DivButtons = styled.div`
   display: flex;
   justify-content:flex-end;
   align-items: center;
-  width: 90%;
+  width: 100%;
+  padding-top: 0.5em;
 
 `
 export const ContainerModal = styled.div`

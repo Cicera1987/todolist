@@ -9,7 +9,6 @@ import Login from "../components/pages/login";
 const Router = () => {
     return (
         <BrowserRouter>
-            <NavBar/>
             <Routes>
                 <Route path="/" element={<ModalCreateTask />} />
                 <Route path="/home" element={<ModalCreateTask />} />

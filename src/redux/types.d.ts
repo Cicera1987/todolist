@@ -20,6 +20,11 @@ export interface ITodoItem{
     tags: ITagsItem[] | null
 }
 
+export interface User{
+    id: number,
+    user: string,
+    password: string,
+}
 export interface ITagsItem{
     id: number,
     title: string

@@ -3,7 +3,7 @@ import { ITodoItem } from "../../types";
 
 
 
-const initialState = { ITodoItem: [] as ITodoItem[], islogged: true };
+const initialState = { ITodoItem: []as ITodoItem[], islogged: false };
 
 export const slice = createSlice({
   name: "todolist",
